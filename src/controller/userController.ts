@@ -10,3 +10,12 @@ export const getUsers = async (req:Request, res:Response):Promise<void> => {
         res.status(500).send(`Error:${error}`)
     }
 }
+
+export const getOne = async (req:Request, res:Response):Promise<void> => {
+    try{
+            const users = await userRepository.findOne(req.params.id)
+        res.status(200).send(users)
+    }catch(error){
+        res.status(500).send(`Error:${error}`)
+    }
+}
